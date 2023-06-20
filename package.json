@@ -10,8 +10,6 @@
     "start-test": "cross-env NODE_ENV=test tsnd --files src/api/bin",
     "jest": "jest",
     "jest-cover": "jest --coverage",
-    "migrate-up": "npx migrate up",
-    "migrate-down": "npx migrate down {$migrate-name}",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write **/*.ts"
   },
