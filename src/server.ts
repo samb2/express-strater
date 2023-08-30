@@ -1,14 +1,11 @@
 import * as http from 'http';
 
-import debug0 from 'debug';
-
 import { logger } from './config/logger';
 import { App } from './app';
 
 export class Server {
     port: number = Config.server.port;
     server: any;
-    debug = debug0('iRole-Express-Api:server');
 
     constructor() {
         this.setServer();
@@ -18,7 +15,8 @@ export class Server {
         /**
          * Create HTTP server.
          */
-        this.server = http.createServer(new App().app);
+        const appInstance: App = App.getInstance();
+        this.server = http.createServer(appInstance.app);
         this.server.listen(this.port, () => {
             logger.info(`Server listening on port: ${this.port} Mode = ${Config.server.environment}`);
         });

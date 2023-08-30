@@ -16,11 +16,19 @@ import rateLimit from 'express-rate-limit';
 
 export class App {
     public app;
+    private static instance: App;
 
     constructor() {
         this.app = express();
         this.setConfig();
         this.setRoutes();
+    }
+
+    public static getInstance(): App {
+        if (!App.instance) {
+            App.instance = new App();
+        }
+        return App.instance;
     }
 
     setConfig() {
